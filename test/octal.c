@@ -6,43 +6,130 @@
  * Return: string with octal
  */
 
-char *itoOctal(va_list list)
+/**
+ * itoo - integer to octal
+ * @list: argument to convert
+ * Return: a string
+ */
+char *itoo(va_list list)
 {
-	int j = 0, eights = 1;
-	int i, k;
-	char *s;
+	unsigned int digits, digitTest;
+	int count, i;
+	char *output;
 
-	k = va_arg(list, int);
-	i = k;
-
-	/* malloc up to max int in octal*/
-	s = malloc(sizeof(char) * 12);
-	if (s == NULL)
+	digits = va_arg(list, unsigned int);
+	count = 0;
+	digitTest = digits;
+	while (digitTest > 0)
+	{
+		digitTest /= 8;
+		count++;
+	}
+	digitTest = digits;
+	output = malloc(sizeof(char) * count + 1);
+	if (output == NULL)
 		return (NULL);
-
-	if (k < 0)
+	for (i = count - 1; i >= 0; i--)
 	{
-		s[0] = 1 + '0';
-		j++;
-		k *= -1;
-		i *= -1;
+		output[i] = ((digitTest % 8) + '0');
+		digitTest /= 8;
 	}
+	output[count] = '\0';
+	return (output);
+}
 
-	/* find biggest power of 8 it's divisible by */
-	while (k > 1)
+/**
+ * litoo - integer to octal (long)
+ * @list: argument to convert
+ * Return: a string
+ */
+char *litoo(va_list list)
+{
+	unsigned long int digits, digitTest;
+	int count, i;
+	char *output;
+
+	digits = va_arg(list, unsigned long int);
+	count = 0;
+	digitTest = digits;
+	while (digitTest > 0)
 	{
-		k /= 8;
-		eights *= 8;
+		digitTest /= 8;
+		count++;
 	}
-
-	/* divide down and store octal num */
-	while (eights > 0)
+	digitTest = digits;
+	output = malloc(sizeof(char) * count + 1);
+	if (output == NULL)
+		return (NULL);
+	for (i = count - 1; i >= 0; i--)
 	{
-		s[j++] = (i / eights + '0');
-		i %= eights;
-		eights /= 8;
+		output[i] = ((digitTest % 8) + '0');
+		digitTest /= 8;
 	}
-	s[j] = '\0';
+	output[count] = '\0';
+	return (output);
+}
 
-	return (s);
+/**
+ * hitoo - integer to octal (short)
+ * @list: argument to convert
+ * Return: a string
+ */
+char *hitoo(va_list list)
+{
+	unsigned short int digits, digitTest;
+	int count, i;
+	char *output;
+
+	digits = (unsigned short) va_arg(list, unsigned int);
+	count = 0;
+	digitTest = digits;
+	while (digitTest > 0)
+	{
+		digitTest /= 8;
+		count++;
+	}
+	digitTest = digits;
+	output = malloc(sizeof(char) * count + 1);
+	if (output == NULL)
+		return (NULL);
+	for (i = count - 1; i >= 0; i--)
+	{
+		output[i] = ((digitTest % 8) + '0');
+		digitTest /= 8;
+	}
+	output[count] = '\0';
+	return (output);
+}
+
+/**
+ * hhitoo - integer to octal(short short)
+ * @list: argument to convert
+ * Return: a string
+ */
+char *hhitoo(va_list list)
+{
+	unsigned char digits, digitTest;
+	int count, i;
+	char *output;
+
+	digits = (unsigned char) va_arg(list, unsigned int);
+	count = 0;
+	digitTest = digits;
+	while (digitTest > 0)
+	{
+		digitTest /= 8;
+		count++;
+	}
+	digitTest = digits;
+	output = malloc(sizeof(char) * count + 1);
+	if (output == NULL)
+		return (NULL);
+	for (i = count - 1; i >= 0; i--)
+	{
+		output[i] = ((digitTest % 8) + '0');
+		digitTest /= 8;
+	}
+	output[count] = '\0';
+	return (output);
 }
