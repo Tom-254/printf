@@ -8,7 +8,7 @@
  * buffer_const_char - puts constant format chars into buffer
  *
  * @format: format string
- * @bufer: output buffer
+ * @buffer: output buffer
  * @len: length of current bufer contents
  *
  * Return: number of chars put into buffer
