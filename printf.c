@@ -17,7 +17,7 @@ int buffer_const_char(char **format, char *buffer, unsigned int *len)
 {
 	int printtotal = 0;
 
-	while (**format != 0 && **format !='%')
+	while (**format != 0 && **format != '%')
 	{
 		buffer[(*len)++] = **format;
 		(*format)++;
@@ -60,7 +60,7 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 	case 's':
 		*freeflag = 1;
 		tmp = va_arg(list, char*);
-		return(prep_string(tmp, spec));
+		return (prep_string(tmp, spec));
 	case 'd':
 	case 'i':
 		*freeflag = 1;
@@ -110,7 +110,7 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 		return (prep_numeric(itox(list), spec));
 	case 'X':
 		*freeflag = 1;
-		if(spec.length == 1)
+		if (spec.length == 1)
 			return (prep_numeric(litoX(list), spec));
 		if (spec.length == -1)
 			return (prep_numeric(hitoX(list), spec));
@@ -156,7 +156,7 @@ specifier get_specifier(char **format, va_list list)
 
 	start = *format;
 	spec.left = 0, spec.sign = 0, spec.space = 0;
-	spec.zerox = 0,spec.zero = 0;
+	spec.zerox = 0, spec.zero = 0;
 	while (**format == '-' || **format == '+' || **format == ' '
 		|| **format == '#' || **format == '0')
 	{
@@ -243,7 +243,7 @@ specifier get_specifier(char **format, va_list list)
 		spec.specifier = 'y';
 		if (spec.length == 0)
 			break;
-	default: 
+	default:
 		*format = start;
 		if (spec.length != 0)
 			(*format)++;
@@ -263,7 +263,7 @@ specifier get_specifier(char **format, va_list list)
 int _printf(char *format, ...)
 {
 	char *tmp = 0, *ptr = 0, buffer[1024];
-	unsigned int len = 0, freeflag = 0;, charzero;
+	unsigned int len = 0, freeflag = 0, charzero;
 	unsigned int printtotal = 0;
 	int lenr = 0;
 	va_list list;
