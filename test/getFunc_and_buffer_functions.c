@@ -19,7 +19,7 @@ char* (*get_func(char i))(va_list)
 		{'X', itoX},
 		/* {'R', rot13}, */
 		/* {'r', rev_string}, */
-		{'o', itoOctal},
+		{'o', itoo},
 		{'\0', NULL}
 	};
 
