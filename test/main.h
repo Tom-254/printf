@@ -19,7 +19,7 @@
  *
  */
 
-typdef struct specifier
+typedef struct specifier
 {
 	unsigned int width;
 	unsigned int precision;
