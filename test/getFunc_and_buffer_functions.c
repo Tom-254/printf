@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
  * create_buffer - creates buffer to hold string until it's ready for print
