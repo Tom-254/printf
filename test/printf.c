@@ -20,7 +20,8 @@ int check_buffer_overflow(char *buffer, int len)
  * _printf - mini printf version
  * @format: initial string with all identifiers
  * Return: strings with identifiers expanded
- */int _printf(const char *format, ...)
+ */
+int _printf(const char *format, ...)
 {
 	int len = 0, total_len = 0, i = 0, j = 0;
 	va_list list;
