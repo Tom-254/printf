@@ -15,6 +15,8 @@ char* (*get_func(char i))(va_list)
 		{'d', print_d},
 		{'i', print_d},
 		{'b', itob},
+		{'x', itox},
+		{'X', itoX},
 		/* {'R', rot13}, */
 		/* {'r', rev_string}, */
 		{'o', itoOctal},
