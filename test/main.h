@@ -20,6 +20,8 @@ char *itob(va_list list);
 char *rot13(va_list list);
 char *rev_string(va_list list);
 char *itoOctal(va_list list);
+char *itox(va_list list);
+char *itoX(va_list list)
 
 /**
  * struct types - struct
