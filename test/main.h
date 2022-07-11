@@ -23,6 +23,7 @@ char *itoo(va_list list);
 char *litoo(va_list list);
 char *hitoo(va_list list);
 char *hhitoo(va_list list);
+char *litox(va_list list);
 char *itox(va_list list);
 char *itoX(va_list list);
 
