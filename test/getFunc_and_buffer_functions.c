@@ -12,12 +12,12 @@ char* (*get_func(char i))(va_list)
 	print keys[] = {
 		{'c', print_c},
 		{'s', print_s},
-		/* {'d', print_d}, */
-		/* {'i', print_d}, */
+		{'d', print_d},
+		{'i', print_d},
 		{'b', itob},
 		/* {'R', rot13}, */
 		/* {'r', rev_string}, */
-		/* {'o', itoOctal}, */
+		{'o', itoOctal},
 		{'\0', NULL}
 	};
 
