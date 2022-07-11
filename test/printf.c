@@ -55,10 +55,10 @@ char *stringize_arg(va_list list, specifier spec)
 		return (tmpstr);
 	case 'c':
 		tmpstr[0] = (char) va_arg(list, int);
-		return (tmpstr, spec);
+		return (tmpstr);
 	case 's':
 		tmp = va_arg(list, char*);
-		return (tmp, spec);
+		return (tmp);
 	return (NULL);
 }
 /**
