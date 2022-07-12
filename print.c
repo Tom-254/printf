@@ -64,7 +64,7 @@ int _printf(const char *format, ...)
 			{
 				f = get_func(format[i]); /* grab function */
 				if (f == NULL)  /* handle fake id */
-				
+				{
 					len = check_buffer_overflow(buffer, len);
 					buffer[len++] = '%';
 					total_len++;
