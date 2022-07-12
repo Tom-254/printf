@@ -10,7 +10,7 @@
  */
 char *convert_to_base(unsigned int num,
 	unsigned int base,
-	unsigned int case_print);
+	unsigned int case_print)
 {
 	static const char upper_case[] = "0123456789ABCDEF";
 	static const char lower_case[] = "0123456789abcdef";
