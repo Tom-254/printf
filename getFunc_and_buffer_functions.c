@@ -14,7 +14,7 @@ char* (*get_func(char i))(va_list)
 		{'s', print_s},
 		{'d', print_d},
 		{'i', print_d},
-		{'b', uitob},
+		{'b', itob},
 		{'x', itox},
 		{'X', itoX},
 		{'R', rot13},
