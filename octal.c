@@ -1,12 +1,6 @@
 #include "main.h"
 
 /**
- * itoOctal - change int to octal
- * @list: int to change
- * Return: string with octal
- */
-
-/**
  * itoo - integer to octal
  * @list: argument to convert
  * Return: a string
