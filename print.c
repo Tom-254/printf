@@ -1,3 +1,5 @@
+#include <limits.h>
+#include <stdio.h>
 #include "main.h"
 /**
  * check_buffer_overflow - if writing over buffer space,
