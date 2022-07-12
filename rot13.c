@@ -25,7 +25,8 @@ char *rot13(va_list list)
 		{
 			nstr[i] = str[i] + 13;
 		}
-		else if ((str[i] >= 'n' && str[i] <= 'z') || (str[i] >= 'N' && str[i] <= 'Z'))
+		else if 
+			((str[i] >= 'n' && str[i] <= 'z') || (str[i] >= 'N' && str[i] <= 'Z'))
 		{
 			nstr[i] = str[i] - 13;
 		}
