@@ -99,8 +99,3 @@ int _printf(const char *format, ...)
 	write_buffer(buffer, len, list);
 	return (total_len);
 }
-
-/**
- * main - sample main program
- * Return: 0 on sucess
- */
