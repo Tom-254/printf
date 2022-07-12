@@ -1,6 +1,46 @@
 #include "main.h"
 
 /**
+ * convert_to_base -  converts num to base
+ * @num: number to convert
+ * @base: base to convert to
+ * @case_print: case to print in
+ * Return: count of the characters printed minus the
+ * null terminator
+ */
+char *convert_to_base(unsigned int num,
+	unsigned int base,
+	unsigned int case_print);
+{
+	static const char upper_case[] = "0123456789ABCDEF";
+	static const char lower_case[] = "0123456789abcdef";
+	static char res[50];
+	char *ptr;
+	int count = 0;
+
+	ptr = &res[49];
+	*ptr = '\0';
+
+	if (case_print)
+	{
+		do {
+			*--ptr = upper_case[num % base];
+			num /= base;
+			count++;
+		} while (num != 0);
+	}
+	else
+	{
+		do {
+			*--ptr = lower_case[num % base];
+			num /= base;
+			count++;
+		} while (num != 0);
+	}
+	return (ptr);
+}
+
+/**
  * itob - change int to binary
  * @list: int to change
  * Return: string with binary
@@ -8,42 +48,7 @@
 
 char *itob(va_list list)
 {
-	int j = 0, twos = 1;
-	int i, k;
-	char *s;
+	int k = va_arg(list, int);
 
-	k = va_arg(list, int);
-	i = k;
-
-	/* malloc up to max int in binary */
-	s = malloc(sizeof(char) * 33);
-	if (s == NULL)
-		return (NULL);
-
-	/* account for negative numbers with '1' at index 0 */
-	if (k < 0)
-	{
-		s[0] = 1 + '0';
-		j++;
-		k *= -1;
-		i *= -1;
-	}
-
-	/* find biggest power of 2 it's divisible by */
-	while (k > 1)
-	{
-		k /= 2;
-		twos *= 2;
-	}
-
-	/* divide down and store binary num */
-	while (twos > 0)
-	{
-		s[j++] = (i / twos + '0');
-		i %= twos;
-		twos /= 2;
-	}
-	s[j] = '\0';
-
-	return (s);
+	return (convert_to_base(k, 2, 1));
 }
