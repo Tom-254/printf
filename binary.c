@@ -1,49 +1,131 @@
 #include "main.h"
+/**
+ * uitob - converts to binary
+ * @list: list to convert
+ * Return: a string
+ */
+char *uitob(va_list list)
+{
+	unsigned int uiArg, uiArgTest;
+	int counter, i;
+	char *result;
+
+	uiArg = va_arg(list, unsigned int);
+	uiArgTest = uiArg;
+	counter = 0;
+	while (uiArgTest != 0)
+	{
+		uiArgTest /= 2;
+		counter++;
+	}
+	result = malloc(sizeof(char) * (counter + 1));
+	if (result == NULL)
+		return (NULL);
+	uiArgTest = uiArg;
+	for (i = counter - 1; i >= 0; i--)
+	{
+		result[i] = ((uiArgTest % 2) + '0');
+		uiArgTest /= 2;
+	}
+	result[counter] = '\0';
+	return (result);
+
+}
+/**
+ * luitob - converts to binary (long)
+ * @list: list to convert
+ * Return: a string
+ */
+char *luitob(va_list list)
+{
+	unsigned long int uiArg, uiArgTest;
+	int counter, i;
+	char *result;
+
+	uiArg = va_arg(list, unsigned long int);
+	uiArgTest = uiArg;
+	counter = 0;
+	while (uiArgTest != 0)
+	{
+		uiArgTest /= 2;
+		counter++;
+	}
+	result = malloc(sizeof(char) * (counter + 1));
+	if (result == NULL)
+		return (NULL);
+	uiArgTest = uiArg;
+	for (i = counter - 1; i >= 0; i--)
+	{
+		result[i] = ((uiArgTest % 2) + '0');
+		uiArgTest /= 2;
+	}
+	result[counter] = '\0';
+	return (result);
+
+}
 
 /**
- * itob - change int to binary
- * @list: int to change
- * Return: string with binary
+ * huitob - converts to binary (short)
+ * @list: list to convert
+ * Return: a string
  */
-
-char *itob(va_list list)
+char *huitob(va_list list)
 {
-	int j = 0, twos = 1;
-	int i, k;
-	char *s;
+	unsigned short int uiArg, uiArgTest;
+	int counter, i;
+	char *result;
 
-	k = va_arg(list, int);
-	i = k;
-
-	/* malloc up to max int in binary */
-	s = malloc(sizeof(char) * 33);
-	if (s == NULL)
+	uiArg = (short) va_arg(list, unsigned int);
+	uiArgTest = uiArg;
+	counter = 0;
+	while (uiArgTest != 0)
+	{
+		uiArgTest /= 2;
+		counter++;
+	}
+	result = malloc(sizeof(char) * (counter + 1));
+	if (result == NULL)
 		return (NULL);
-
-	/* account for negative numbers with '1' at index 0 */
-	if (k < 0)
+	uiArgTest = uiArg;
+	for (i = counter - 1; i >= 0; i--)
 	{
-		s[0] = 1 + '0';
-		j++;
-		k *= -1;
-		i *= -1;
+		result[i] = ((uiArgTest % 2) + '0');
+		uiArgTest /= 2;
 	}
+	result[counter] = '\0';
+	return (result);
 
-	/* find biggest power of 2 it's divisible by */
-	while (k > 1)
+}
+
+/**
+ * hhuitob - converts to binary (short short)
+ * @list: list to convert
+ * Return: a string
+ */
+char *hhuitob(va_list list)
+{
+	unsigned char uiArg, uiArgTest;
+	int counter, i;
+	char *result;
+
+	uiArg = (unsigned char) va_arg(list, unsigned int);
+	uiArgTest = uiArg;
+	counter = 0;
+	while (uiArgTest != 0)
 	{
-		k /= 2;
-		twos *= 2;
+		uiArgTest /= 2;
+		counter++;
 	}
-
-	/* divide down and store binary num */
-	while (twos > 0)
+	result = malloc(sizeof(char) * (counter + 1));
+	if (result == NULL)
+		return (NULL);
+	uiArgTest = uiArg;
+	for (i = counter - 1; i >= 0; i--)
 	{
-		s[j++] = (i / twos + '0');
-		i %= twos;
-		twos /= 2;
+		result[i] = ((uiArgTest % 2) + '0');
+		uiArgTest /= 2;
 	}
-	s[j] = '\0';
+	result[counter] = '\0';
+	return (result);
 
-	return (s);
 }
