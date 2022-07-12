@@ -1,38 +1,42 @@
 #ifndef MAIN_H
 #define MAIN_H
-#include <stdarg.h>
+#include <stdarg.h> /* va_list */
+#include <stdlib.h> /* malloc, free */
+#include <unistd.h> /* write */
+
+/* helper functions */
+char* (*get_func(char i))(va_list);
+char *create_buffer(void);
+void write_buffer(char *buffer, int len, va_list list);
+char *_strcpy(char *dest, char *src);
+int _strlen(char *s);
+
+/* printf functions */
+int _printf(const char *format, ...);
+char *print_s(va_list list);
+char *print_c(va_list list);
+char *print_d(va_list list);
+char *itob(va_list list);
+char *rot13(va_list list);
+char *rev_string(va_list list);
+char *itoo(va_list list);
+char *litoo(va_list list);
+char *hitoo(va_list list);
+char *hhitoo(va_list list);
+char *litox(va_list list);
+char *itox(va_list list);
+char *itoX(va_list list);
 
 /**
- * struct specifier - contains specifiers for printf
- *
- * @width: width of field to print
- * @precision: precision of field to print
- * @length: modifier type length. h/l flags. 0 defualt, +1 per l, -1 per h
- * @widthflag: tels whether width is set
- * @precisionflag: tells whether precision is set
- * @let: left justify, '-'. 0 for right, 1 for left
- * @sign: force sign, '+'. 0 for no, 1 for yes
- * @space: space pad left side of positive numbers if leading 0s. 0 no 1 yes
- * @zero: zero pad numbers up to width. 0 for nom 1 for yes.
- * @zerox: add leading 0, 0x, or 0X to o, x or X specifiers. 0 no 1 yes
- * @specifier: the data type to print, c, s, d, x, etc.
+ * struct types - struct
+ * @id: identifier of type to print (e.g. c means char)
+ * @func: ptr to functions that print according to identifier (e.g. print_c)
  */
-typdef struct specifier
-{
-	unsigned int width;
-	unsigned int precision;
-	int length;
-	char widthflag;
-	char precisionflag;
-	char left;
-	char sign;
-	char space;
-	char zero;
-	char zerox;
-	char specifier;
-} specifier;
 
-/* from printf.c */
-int _printf(char *format, ...);
+typedef struct types
+{
+	char id;
+	char* (*func)(va_list);
+} print;
 
 #endif
