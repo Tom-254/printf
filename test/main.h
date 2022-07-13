@@ -26,9 +26,6 @@ char *hhitoo(va_list list);
 char *litox(va_list list);
 char *itox(va_list list);
 char *itoX(va_list list);
-char *convert_to_base(unsigned int num,
-	unsigned int base,
-	unsigned int case_print);
 
 /**
  * struct types - struct
