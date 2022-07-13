@@ -1,45 +1,53 @@
-#ifndef MAIN_H
-#define MAIN_H
-#include <stdarg.h> /* va_list */
-#include <stdlib.h> /* malloc, free */
-#include <unistd.h> /* write */
+#ifndef HEADER_FILE
+#define HEADER_FILE
 
-/* helper functions */
-char* (*get_func(char i))(va_list);
-char *create_buffer(void);
-void write_buffer(char *buffer, int len, va_list list);
-char *_strcpy(char *dest, char *src);
-int _strlen(char *s);
-
-/* printf functions */
-int _printf(const char *format, ...);
-char *print_s(va_list list);
-char *print_c(va_list list);
-char *print_d(va_list list);
-char *itob(va_list list);
-char *rot13(va_list list);
-char *rev_string(va_list list);
-char *itoo(va_list list);
-char *litoo(va_list list);
-char *hitoo(va_list list);
-char *hhitoo(va_list list);
-char *litox(va_list list);
-char *itox(va_list list);
-char *itoX(va_list list);
-char *convert_to_base(unsigned int num,
-	unsigned int base,
-	unsigned int case_print);
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <unistd.h>
 
 /**
- * struct types - struct
- * @id: identifier of type to print (e.g. c means char)
- * @func: ptr to functions that print according to identifier (e.g. print_c)
+ * struct func_calls - stores formart specifier and its function
+ * @specifier: type to print
+ * @func: pointer to a function for checking
+ * Description: stores functions easy way to print the right data
  */
-
-typedef struct types
+struct func_calls
 {
-	char id;
-	char* (*func)(va_list);
-} print;
+	char *specifier;
 
+	int (*func)(char *buffer, unsigned int *len, va_list *ap);
+};
+
+/**
+ * func_calls - Typedef for struct for func_calls
+ */
+typedef struct func_calls func_calls;
+
+int _putchar(char c);
+int print_s_count(char *buffer, unsigned int *len, char *str);
+void check_write_buffer(char *buffer, unsigned int *len);
+int convert_to_base(char *buffer, unsigned int *len,
+	unsigned int num, unsigned int base,
+	unsigned int case_print);
+void check_write_buffer(char *buffer, unsigned int *len);
+int print_x(char *buffer, unsigned int *len, va_list *x);
+int print_X(char *buffer, unsigned int *len, va_list *X);
+int print_o(char *buffer, unsigned int *len, va_list *o);
+int print_p(char *buffer, unsigned int *len, va_list *p);
+int print_b(char *buffer, unsigned int *len, va_list *deci);
+int print_d(char *buffer, unsigned int *len, va_list *deci);
+int print_u(char *buffer, unsigned int *len, va_list *deci);
+int _printf_function_switch(char *buffer, unsigned int *len,
+	va_list *s,
+	const char specifier);
+int print_c(char *buffer, unsigned int *len, va_list *c);
+char *create_buffer();
+int print_s(char *buffer, unsigned int *len, va_list *s);
+int _printf(const char *format, ...);
+int print_rev(char *buffer, unsigned int *len, va_list *s);
+int _strlen(char *s);
+int rot13(char *buffer, unsigned int *len, va_list *s);
+int print_perc(char *buffer, unsigned int *len, va_list *c);
 #endif
+
